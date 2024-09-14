@@ -21,10 +21,11 @@ dummy calculation:
 // Here's a wonderful place to make some routes:
 
 // GET /calculations
-
+app.get("/calculations", (req, res) => {
+  res.send(calculations);
+});
 // POST /calculations
 app.post("/calculations", (req, res) => {
-  res.sendStatus(200);
   let calculation = req.body;
   console.log(calculation);
   let n1 = calculation.numOne;
@@ -37,6 +38,7 @@ app.post("/calculations", (req, res) => {
   };
   console.log(finishedCalc);
   calculations.push(finishedCalc);
+  res.sendStatus(201);
 });
 
 function calculate(n1, n2, op) {
